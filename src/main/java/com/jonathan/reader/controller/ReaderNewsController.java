@@ -13,15 +13,28 @@ import org.springframework.web.servlet.ModelAndView;
  *
  * @author jonathan
  */
-
 @Controller
 @RequestMapping("/ReaderNews")
 public class ReaderNewsController {
-    
+
     @RequestMapping
-    public ModelAndView init(){
-        System.out.println("Estou aqui");
+    public ModelAndView init() {
+        System.out.println("Página de login");
         ModelAndView mv = new ModelAndView("login");
+        return mv;
+    }
+
+    @RequestMapping("/recover-password")
+    public ModelAndView recoverPasswordPage() {
+        System.out.println("Página recuperação de senha");
+        ModelAndView mv = new ModelAndView("recover-password");
+        return mv;
+    }
+
+    @RequestMapping("/create-register")
+    public ModelAndView createRegister() {
+        System.out.println("Página criação cadastro");
+        ModelAndView mv = new ModelAndView("create-register");
         return mv;
     }
 }

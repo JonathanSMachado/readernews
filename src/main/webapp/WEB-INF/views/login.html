@@ -12,8 +12,8 @@ and open the template in the editor.
 
     <head>
         <title th:text="#{app-title}">título da aplicação</title>
-        <link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap.min.css" th:href="@{/resources/css/bootstrap.min.css}"/>
-        <link rel="stylesheet" type="text/css" href="../../resources/css/signin.css" th:href="@{/resources/css/signin.css}"/>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/signin.css"/>
     </head>
     <body>
         <th:block layout:fragment="content">
@@ -32,10 +32,15 @@ and open the template in the editor.
                                name="password" required="true"/>
                         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                     </div>                 
-                    <button class="btn btn-lg btn-primary btn-block" type="submit" th:text="#{btn-enter}">btn entrar    </button>
-                    <div class="checkbox text-right">
-                        <label>
-                            <a href="#" th:text="#{forgot-password}">link para recuperação de senha</a>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit" th:text="#{btn-enter}">btn entrar</button>
+                    <div class="row">
+                        <label class="col-lg-12 col-xs-12 text-right">
+                            <a href="/ReaderNews/recover-password" th:text="#{forgot-password}">link para recuperação de senha</a>
+                        </label>
+                    </div>
+                    <div class="row">
+                        <label class="col-lg-12 col-xs-12 text-center">
+                            <h4 class="" th:utext="#{create-user}"/>
                         </label>
                     </div>
                 </form>
