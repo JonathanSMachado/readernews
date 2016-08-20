@@ -37,4 +37,11 @@ public class ReaderNewsController {
         ModelAndView mv = new ModelAndView("create-register");
         return mv;
     }
+    
+    @RequestMapping("/main")
+    public ModelAndView mainPage(){
+        System.out.println("Página principal");
+        ModelAndView mv = new ModelAndView("/reader/main");
+        return mv;
+    }
 }
