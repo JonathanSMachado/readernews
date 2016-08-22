@@ -15,7 +15,11 @@ and open the template in the editor.
     </head>
     <body>
         <div>Main Page</div>
-
-        <a th:href="@{/logout}">Logout</a>
+        <br/>
+        
+        <p th:text="${user}"/>
+        <form th:action="@{/logout}" method="POST">
+            <input type="submit" value="Sair"/>
+        </form>
     </body>
 </html>

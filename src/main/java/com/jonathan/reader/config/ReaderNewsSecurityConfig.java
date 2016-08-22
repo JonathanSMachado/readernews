@@ -22,12 +22,23 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 @EnableWebSecurity
 public class ReaderNewsSecurityConfig extends WebSecurityConfigurerAdapter {
-
+    
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth
+//            .inMemoryAuthentication()
+//                .withUser("jonathan@reader.com")
+//                .password("a")
+//                .roles("");
+//    }
+    
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
         auth
             .inMemoryAuthentication()
-                .withUser("jonathan@reader.com").password("asd").roles("");
+                .withUser("jonathan@reader.com")
+                .password("a")
+                .roles("");
     }
     
     @Override
@@ -38,8 +49,10 @@ public class ReaderNewsSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
-                .loginPage("/login")
+                .loginPage("/ReaderNews/login")
                 .permitAll()
+                .and()
+            .httpBasic()
                 .and()
             .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
@@ -47,7 +60,8 @@ public class ReaderNewsSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-
+        web
+            .ignoring()
+                .antMatchers("/resources/**");
     }
-
 }

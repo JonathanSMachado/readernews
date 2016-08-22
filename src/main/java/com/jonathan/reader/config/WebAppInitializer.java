@@ -16,8 +16,7 @@ import org.springframework.web.servlet.DispatcherServlet;
  *
  * @author jonathan
  */
-
-public class WebAppInitializer implements WebApplicationInitializer{
+public class WebAppInitializer implements WebApplicationInitializer {
 
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
@@ -28,10 +27,5 @@ public class WebAppInitializer implements WebApplicationInitializer{
         Dynamic dynamic = servletContext.addServlet("dispatcher", new DispatcherServlet(ctx));
         dynamic.addMapping("/");
         dynamic.setLoadOnStartup(1);
-    }
-    
-    
+    } 
 }
-
-
-
