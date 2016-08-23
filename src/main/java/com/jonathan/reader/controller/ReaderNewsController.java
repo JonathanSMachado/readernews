@@ -9,6 +9,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -38,6 +39,15 @@ public class ReaderNewsController {
     public ModelAndView createRegisterPage() {
         System.out.println("Página criação cadastro");
         ModelAndView mv = new ModelAndView("create-register");
+        return mv;
+    }
+    
+    @RequestMapping(value = "/create-register", method = RequestMethod.POST)
+    public ModelAndView createUser(){
+        System.out.println("Salvando o registro");
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("create-register");
+        mv.addObject("message", "estou gravando o usuário");
         return mv;
     }
       

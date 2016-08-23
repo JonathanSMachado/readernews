@@ -4,13 +4,74 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html>
+<html lang="pt-BR" 
+      xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="templates/layout-simples">
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title th:text="#{app-title}">título da aplicação</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/signin.css"/>
     </head>
     <body>
-        <div>Form registro</div>
+        <th:block layout:fragment="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="page-header">
+                            <h1 class="text-center" th:text="#{register-title}"></h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class=" col-md-4">
+                        <form method="POST" th:action="@{/ReaderNews/create-register}">
+                            <div class="">
+                                <h3 th:text="${message}">mensagem de retorno após submeter o form de registro</h3>
+                            </div>
+                            
+                            <div class="form-group has-feedback">
+                                <label for="email" class="sr-only" th:text="#{email}"></label>
+                                <input type="email" id="email" class="form-control input-lg" 
+                                       autofocus="autofocus" name="email" required="true" th:placeholder="#{email-placeholder}"/>
+                                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label for="name" class="sr-only" th:text="#{name}"></label>
+                                <input type="text" id="name" class="form-control input-lg" 
+                                       name="name" required="true" th:placeholder="#{name-placeholder}"/>
+                                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label for="password" class="sr-only" th:text="#{password}"></label>
+                                <input type="password" class="form-control input-lg" th:placeholder="#{password-placeholder}" 
+                                       name="password" required="true"/>
+                                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <label for="confirm_password" class="sr-only" th:text="#{confirm-password}"></label>
+                                <input type="password" class="form-control input-lg" th:placeholder="#{confirm-password-placeholder}" 
+                                       name="confirm_password" required="true"/>
+                                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                            </div> 
+                            <div class="form-group has-feedback">
+                                <label for="birth_date" class="sr-only" th:text="#{birth-date}"></label>
+                                <input type="date" class="form-control input-lg" id="birth_date" th:placeholder="#{birth-date-placeholder}"/>
+                                <span class="glyphicon glyphicon-calendar form-control-feedback"></span>
+                            </div>
+                            
+                            <button class="btn btn-lg btn-primary btn-block" type="submit" th:text="#{btn-register}"></button>
+                            
+                            <a class="btn btn-lg btn-success btn-block" href="/" th:text="#{link-login}"></a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </th:block>
     </body>
 </html>

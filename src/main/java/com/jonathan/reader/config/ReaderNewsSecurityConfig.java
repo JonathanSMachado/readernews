@@ -45,7 +45,8 @@ public class ReaderNewsSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-                .antMatchers("/reader/**").hasRole("")
+                .antMatchers("/ReaderNews/create-register").permitAll()
+                .antMatchers("/ReaderNews/recover-password").permitAll()
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
