@@ -30,11 +30,16 @@ and open the template in the editor.
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class=" col-md-4">
+
+                        <div class="alert alert-success alert-dismissible" role="alert" th:if="${not #strings.isEmpty(message)}">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <span th:text="${message}"></span>
+                        </div>
+
                         <form method="POST" th:action="@{/ReaderNews/create-register}">
-                            <div class="">
-                                <h3 th:text="${message}">mensagem de retorno após submeter o form de registro</h3>
-                            </div>
-                            
+
                             <div class="form-group has-feedback">
                                 <label for="email" class="sr-only" th:text="#{email}"></label>
                                 <input type="email" id="email" class="form-control input-lg" 
@@ -64,9 +69,9 @@ and open the template in the editor.
                                 <input type="date" class="form-control input-lg" id="birth_date" th:placeholder="#{birth-date-placeholder}"/>
                                 <span class="glyphicon glyphicon-calendar form-control-feedback"></span>
                             </div>
-                            
+
                             <button class="btn btn-lg btn-primary btn-block" type="submit" th:text="#{btn-register}"></button>
-                            
+
                             <a class="btn btn-lg btn-success btn-block" href="/" th:text="#{link-login}"></a>
                         </form>
                     </div>
