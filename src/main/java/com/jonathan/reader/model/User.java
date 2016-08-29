@@ -7,13 +7,27 @@ package com.jonathan.reader.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author jonathan
  */
+
+@Entity
+@Table(name = "users")
 public class User implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     
+    //TODO: ajustar as anotações das colunas
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String email;
     private String name;

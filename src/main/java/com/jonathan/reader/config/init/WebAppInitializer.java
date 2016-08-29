@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jonathan.reader.config;
+package com.jonathan.reader.config.init;
 
+import com.jonathan.reader.config.ReaderNewsConfig;
+import com.jonathan.reader.config.ReaderNewsSecurityConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration.Dynamic;
