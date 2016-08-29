@@ -5,6 +5,7 @@
  */
 package com.jonathan.reader.repository.impl;
 
+import com.jonathan.reader.model.Profile;
 import com.jonathan.reader.model.User;
 import com.jonathan.reader.repository.UserRepository;
 import java.util.List;
@@ -42,6 +43,7 @@ public class UserRepositoryImpl implements UserRepository{
         userToUpdate.setBirth(user.getBirth());
         userToUpdate.setName(user.getName());
         userToUpdate.setPassword(user.getPassword());
+        userToUpdate.setProfile(Profile.ADMIN);
         getCurrentSession().update(user);
     }
 

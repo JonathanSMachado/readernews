@@ -35,7 +35,7 @@ public class User implements Serializable {
     private Date birth;
     private Date lastAccess;
     private Date registrationDate;
-    private String profile;
+    private Profile profile;
     private String validation;
     private Boolean active;
 
@@ -95,11 +95,11 @@ public class User implements Serializable {
         this.registrationDate = registrationDate;
     }
 
-    public String getProfile() {
+    public Profile getProfile() {
         return profile;
     }
 
-    public void setProfile(String profile) {
+    public void setProfile(Profile profile) {
         this.profile = profile;
     }
 
