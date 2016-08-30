@@ -77,6 +77,5 @@ public class UserRepositoryImpl implements UserRepository{
     @Override
     public List<User> getUsers() {
         return getCurrentSession().createQuery("from User").list();
-    }
-    
+    }    
 }

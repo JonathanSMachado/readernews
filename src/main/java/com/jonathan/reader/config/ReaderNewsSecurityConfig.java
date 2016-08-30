@@ -22,16 +22,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 @EnableWebSecurity
 public class ReaderNewsSecurityConfig extends WebSecurityConfigurerAdapter {
-    
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth
-//            .inMemoryAuthentication()
-//                .withUser("jonathan@reader.com")
-//                .password("a")
-//                .roles("");
-//    }
-    
+        
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
         auth

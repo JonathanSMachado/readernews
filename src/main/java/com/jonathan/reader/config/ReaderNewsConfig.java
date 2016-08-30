@@ -135,6 +135,7 @@ public class ReaderNewsConfig extends WebMvcConfigurerAdapter implements Applica
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
         messageSource.setBasename("i18n/messages");
         messageSource.setDefaultEncoding("UTF-8");
+        messageSource.setCacheSeconds(5);
         return messageSource;
     }
 

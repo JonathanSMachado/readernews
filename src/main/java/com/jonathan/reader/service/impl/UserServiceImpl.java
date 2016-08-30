@@ -20,14 +20,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService{
     
     @Autowired
     private UserRepository userRepository;
-
+    
     @Override
     public void addUser(User user) {
         userRepository.addUser(user);
+        
     }
 
     @Override
@@ -54,5 +55,4 @@ public class UserServiceImpl implements UserService {
     public List<User> getUsers() {
         return userRepository.getUsers();
     }
-    
 }
