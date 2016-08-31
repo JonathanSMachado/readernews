@@ -7,8 +7,10 @@ package com.jonathan.reader.controller;
 
 import com.jonathan.reader.service.UserService;
 import com.jonathan.reader.model.User;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -40,15 +42,23 @@ public class ReaderNewsController {
     }
 
     @RequestMapping("/create-register")
-    public ModelAndView createRegisterPage() {
+    public ModelAndView createRegisterPage(User user) {
         System.out.println("Página criação cadastro");
         ModelAndView mv = new ModelAndView("create-register");
-        mv.addObject("user", new User());
+        //mv.addObject("user", new User());
         return mv;
     }
     
     @RequestMapping(value = "/create-register", method = RequestMethod.POST)
-    public ModelAndView createUser(@ModelAttribute User user){
+    public ModelAndView createUser(@Valid User user, BindingResult result){
+        
+        System.out.println(user.toString());
+        
+        if (result.hasErrors()){
+            System.out.println("Há erros no cadastro");
+            return createRegisterPage(user);
+        }
+        
         System.out.println("Salvando o registro");
         ModelAndView mv = new ModelAndView("create-register");
         userService.addUser(user);

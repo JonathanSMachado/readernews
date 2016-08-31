@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jonathan.reader.config;
+package com.jonathan.reader.configuration;
 
 import java.util.Properties;
 import javax.annotation.Resource;
@@ -42,7 +42,7 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 @ComponentScan("com.jonathan.reader")
 @PropertySource("classpath:application.properties")
 @EnableTransactionManagement
-public class ReaderNewsConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware {
+public class AppConfiguration extends WebMvcConfigurerAdapter implements ApplicationContextAware {
     
     private static final String PROPERTY_NAME_DATABASE_DRIVER = "db.driver";
     private static final String PROPERTY_NAME_DATABASE_PASSWORD = "db.password";

@@ -38,35 +38,35 @@ and open the template in the editor.
                             <span th:text="${message}"></span>
                         </div>
 
-                        <form method="POST" th:action="@{/ReaderNews/create-register}">
+                        <form method="POST" th:object="${user}" th:action="@{/ReaderNews/create-register}">
 
                             <div class="form-group has-feedback">
                                 <label for="email" class="sr-only" th:text="#{email}"></label>
-                                <input type="email" id="email" class="form-control input-lg" 
-                                       autofocus="autofocus" name="email" required="true" th:placeholder="#{email-placeholder}"/>
+                                <input type="email" id="email" class="form-control input-lg" th:field="*{email}"
+                                       autofocus="autofocus" required="true" th:placeholder="#{email-placeholder}"/>
                                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                             </div>
                             <div class="form-group has-feedback">
                                 <label for="name" class="sr-only" th:text="#{name}"></label>
-                                <input type="text" id="name" class="form-control input-lg" 
-                                       name="name" required="true" th:placeholder="#{name-placeholder}"/>
+                                <input type="text" id="name" class="form-control input-lg" th:field="*{name}"
+                                       required="true" th:placeholder="#{name-placeholder}"/>
                                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
                             </div>
                             <div class="form-group has-feedback">
                                 <label for="password" class="sr-only" th:text="#{password}"></label>
-                                <input type="password" class="form-control input-lg" th:placeholder="#{password-placeholder}" 
-                                       name="password" required="true"/>
+                                <input type="password" id="password" class="form-control input-lg" th:placeholder="#{password-placeholder}" 
+                                       required="true" th:field="*{password}"/>
                                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                             </div>
                             <div class="form-group has-feedback">
                                 <label for="confirm_password" class="sr-only" th:text="#{confirm-password}"></label>
-                                <input type="password" class="form-control input-lg" th:placeholder="#{confirm-password-placeholder}" 
-                                       name="confirm_password" required="true"/>
+                                <input type="password" id="confirm_password" class="form-control input-lg" th:placeholder="#{confirm-password-placeholder}" 
+                                       required="true"/>
                                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                             </div> 
                             <div class="form-group has-feedback">
                                 <label for="birth_date" class="sr-only" th:text="#{birth-date}"></label>
-                                <input type="date" class="form-control input-lg" id="birth_date" th:placeholder="#{birth-date-placeholder}"/>
+                                <input type="date" id="birth" class="form-control input-lg" th:field="*{birth}" th:placeholder="#{birth-date-placeholder}"/>
                                 <span class="glyphicon glyphicon-calendar form-control-feedback"></span>
                             </div>
 

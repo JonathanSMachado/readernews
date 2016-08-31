@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jonathan.reader.config;
+package com.jonathan.reader.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -21,7 +21,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
-public class ReaderNewsSecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityAppConfiguration extends WebSecurityConfigurerAdapter {
         
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{

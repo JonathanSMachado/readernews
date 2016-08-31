@@ -43,7 +43,7 @@ public class UserRepositoryImpl implements UserRepository{
         userToUpdate.setBirth(user.getBirth());
         userToUpdate.setName(user.getName());
         userToUpdate.setPassword(user.getPassword());
-        userToUpdate.setProfile(Profile.ADMIN);
+        userToUpdate.setProfile(Profile.ADMIN); //TODO: parar de setar todos como admin
         getCurrentSession().update(user);
     }
 

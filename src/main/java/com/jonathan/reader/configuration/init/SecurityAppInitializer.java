@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.jonathan.reader.config.init;
+package com.jonathan.reader.configuration.init;
 
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 
@@ -11,6 +11,6 @@ import org.springframework.security.web.context.AbstractSecurityWebApplicationIn
  *
  * @author jonathan
  */
-public class SecurityWebApplicationInitializer extends AbstractSecurityWebApplicationInitializer {
+public class SecurityAppInitializer extends AbstractSecurityWebApplicationInitializer {
 
 }
