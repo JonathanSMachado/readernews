@@ -33,28 +33,23 @@ public class UserRepositoryImpl implements UserRepository{
     }
     
     @Override
-    public void addUser(User user) {
+    public void create(User user) {
         getCurrentSession().save(user);
     }
 
     @Override
-    public void updateUser(User user) {
-        User userToUpdate = getUserById(user.getId());
-        userToUpdate.setBirth(user.getBirth());
-        userToUpdate.setName(user.getName());
-        userToUpdate.setPassword(user.getPassword());
-        userToUpdate.setProfile(Profile.ADMIN); //TODO: parar de setar todos como admin
+    public void update(User user) {
         getCurrentSession().update(user);
     }
 
     @Override
-    public User getUserById(Long id) {
+    public User getById(Long id) {
         User user = (User) getCurrentSession().get(User.class, id);
         return user;
     }
 
     @Override
-    public User getUserByEmail(String email) {
+    public User getByEmail(String email) {
         User user = null;        
         Query q = getCurrentSession().createQuery("SELECT u FROM User u WHERE u.email = :email", User.class);
         q.setParameter("email", email);
@@ -67,15 +62,15 @@ public class UserRepositoryImpl implements UserRepository{
     }
 
     @Override
-    public void deleteUser(Long id) {
-        User user = getUserById(id);
+    public void delete(Long id) {
+        User user = getById(id);
         if (user != null){
             getCurrentSession().delete(user);
         }
     }
 
     @Override
-    public List<User> getUsers() {
+    public List<User> getAll() {
         return getCurrentSession().createQuery("from User").list();
     }    
 }

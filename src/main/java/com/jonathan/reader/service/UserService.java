@@ -14,11 +14,11 @@ import java.util.List;
  */
 public interface UserService {
     
-    public void addUser(User user);
-    public void updateUser(User user);
-    public User getUserById(Long id);
-    public User geUserByEmail(String email);
-    public void deleteUser(Long id);
-    public List<User> getUsers();
+    public void add(User user);
+    public void update(User user);
+    public User getById(Long id);
+    public User getByEmail(String email);
+    public void delete(Long id);
+    public List<User> getAll();
     
 }

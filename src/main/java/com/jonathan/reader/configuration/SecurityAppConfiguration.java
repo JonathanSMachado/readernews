@@ -36,7 +36,7 @@ public class SecurityAppConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-                .antMatchers("/ReaderNews/create-register").permitAll()
+                .antMatchers("/ReaderNews/register").permitAll()
                 .antMatchers("/ReaderNews/recover-password").permitAll()
                 .anyRequest().authenticated()
                 .and()

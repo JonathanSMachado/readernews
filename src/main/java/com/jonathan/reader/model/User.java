@@ -15,6 +15,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.NotBlank;
 
 /**
  *
@@ -34,12 +36,15 @@ public class User implements Serializable {
     private Long id;
     
     @Column(unique = true, nullable = false)
+    @NotBlank(message = "E-mail é obrigatório")    
     private String email;
     
     @Column(nullable = false)
+    @NotBlank(message = "Nome é obrigatório")
     private String name;
     
     @Column(nullable = false)
+    @NotBlank(message = "Senha é obrigatória")
     private String password;
     
     @Column(nullable = false)
@@ -54,11 +59,13 @@ public class User implements Serializable {
     private Date registrationDate;
     
     @Column(nullable = false)
+    @NotNull(message = "Campo profile não pode ser nulo")
     private Profile profile;
     
     private String validation;
     
     @Column(nullable = false)
+    @NotNull(message = "Campo active não pode ser nulo")
     private Boolean active;
 
     public Long getId() {

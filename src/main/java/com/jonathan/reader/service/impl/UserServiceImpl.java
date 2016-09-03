@@ -5,6 +5,7 @@
  */
 package com.jonathan.reader.service.impl;
 
+import com.jonathan.reader.model.Profile;
 import com.jonathan.reader.model.User;
 import com.jonathan.reader.repository.UserRepository;
 import com.jonathan.reader.service.UserService;
@@ -26,33 +27,42 @@ public class UserServiceImpl implements UserService{
     private UserRepository userRepository;
     
     @Override
-    public void addUser(User user) {
-        userRepository.addUser(user);
+    public void add(User user) {
+        userRepository.create(user);
+    }
+
+    @Override
+    public void update(User user) {
+        User userToUpdate = userRepository.getById(user.getId());
+        userToUpdate.setBirth(user.getBirth());
+        userToUpdate.setName(user.getName());
+        userToUpdate.setPassword(user.getPassword());
+        userToUpdate.setProfile(Profile.ADMIN); //TODO: parar de setar todos como admin
+        userRepository.update(user);
+    }
+
+    @Override
+    public User getById(Long id) {
+        return userRepository.getById(id);
+    }
+
+    @Override
+    public User getByEmail(String email) {
+        return userRepository.getByEmail(email);
+    }
+
+    @Override
+    public void delete(Long id) {
+        userRepository.delete(id);
+    }
+
+    @Override
+    public List<User> getAll() {
+        return userRepository.getAll();
+    }
+    
+    private boolean validateUser(User user){
         
-    }
-
-    @Override
-    public void updateUser(User user) {
-        userRepository.updateUser(user);
-    }
-
-    @Override
-    public User getUserById(Long id) {
-        return userRepository.getUserById(id);
-    }
-
-    @Override
-    public User geUserByEmail(String email) {
-        return userRepository.getUserByEmail(email);
-    }
-
-    @Override
-    public void deleteUser(Long id) {
-        userRepository.deleteUser(id);
-    }
-
-    @Override
-    public List<User> getUsers() {
-        return userRepository.getUsers();
+        return true;
     }
 }

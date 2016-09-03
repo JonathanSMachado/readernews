@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="pt-BR" 
+      xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="templates/layout-simples">
+    <head>
+        <title th:text="#{app-title}">título da aplicação</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="../../resources/css/signin.css"/>
+    </head>
+    <body>
+        <th:block layout:fragment="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="page-header">
+                            <h1 class="text-center" th:text="#{register-title}"></h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class=" col-md-4">
+
+                        <!-- Mensagem de OK se o cadastro foi efetuado com sucesso -->
+                        <div class="alert alert-success alert-dismissible" role="alert" th:if="${not #strings.isEmpty(message_success)}">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <span th:text="${message}"></span>
+                        </div>
+                        
+                        <!-- Mensagem de erro  -->
+                        <div class="alert alert-danger alert-dismissible" role="alert" th:if="${not #strings.isEmpty(message_error)}">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <span th:text="${message}"></span>
+                        </div>
+                        
+                        <form method="POST" th:object="${user}" th:action="@{/ReaderNews/register}">
+
+                            <!-- Reavaliar mensagens de alertas -->
+                            <!--
+                            <div class="alert alert-danger alert-dismissible"
+                                id="messages" th:if="${#fields.hasAnyErrors()}"
+                                th:with="notifyMessages=${session[T(com.jonathan.reader.service.notification.impl
+                                    .NotificationServiceImpl).NOTIFY_MSG_SESSION_KEY]}">
+
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                
+                                <div class="text-danger"
+                                    th:each="message : ${notifyMessages}" 
+                                    th:text="${message.text}">
+                                </div>                            
+                            </div>
+                            
+                            <div class="alert alert-danger alert-dismissible" role="alert" th:if="${#fields.hasAnyErrors()}">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <th:block th:each="erro : ${#fields.detailedErrors()}">
+                                    <div>
+                                        <i class="fa"></i>
+                                        <span th:text="${erro.message}"></span>
+                                    </div>
+                                </th:block>
+                            </div>
+                            -->
+
+                            <div class="form-group has-feedback" th:classappend="${#fields.hasErrors('name')} ? has-error">
+                                <input type="text" id="name" class="form-control input-lg" th:field="*{name}"
+                                       autofocus="autofocus" th:placeholder="#{name-placeholder}"/>
+                                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                            </div>
+
+                            <div class="form-group has-feedback" th:classappend="${#fields.hasErrors('email')} ? has-error">
+                                <input type="email" id="email" class="form-control input-lg" th:field="*{email}"
+                                       th:placeholder="#{email-placeholder}"/>
+                                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                            </div>
+
+                            <div class="form-group has-feedback">
+                                <input type="email" id="confirm_email" class="form-control input-lg"
+                                       th:placeholder="#{confirm-email-placeholder}"/>
+                                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                            </div>
+
+                            <div class="form-group has-feedback" th:classappend="${#fields.hasErrors('password')} ? has-error">
+                                <input type="password" id="password" class="form-control input-lg" th:placeholder="#{password-placeholder}" 
+                                       th:field="*{password}"/>
+                                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                            </div>
+
+                            <div class="form-group has-feedback">
+                                <input type="password" id="confirm_password" class="form-control input-lg" 
+                                       th:placeholder="#{confirm-password-placeholder}"/>
+                                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                            </div>
+
+                            <!--
+                            <div class="form-group has-feedback">
+                                <input type="date" id="birth" class="form-control input-lg" th:field="*{birth}" 
+                                       th:placeholder="#{birth-date-placeholder}"/>
+                                <span class="glyphicon glyphicon-calendar form-control-feedback"></span>
+                            </div>
+                            -->
+
+                            <button class="btn btn-lg btn-primary btn-block" type="submit" th:text="#{btn-register}"></button>
+
+                            <a class="btn btn-lg btn-success btn-block" href="/" th:text="#{link-login}"></a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </th:block>
+    </body>
+</html>

@@ -7,11 +7,11 @@ package com.jonathan.reader.controller;
 
 import com.jonathan.reader.service.UserService;
 import com.jonathan.reader.model.User;
+import com.jonathan.reader.service.notification.NotificationService;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,45 +25,43 @@ import org.springframework.web.servlet.ModelAndView;
 public class ReaderNewsController {
     
     @Autowired
-    private UserService userService; //TODO: rever este ponto
+    private UserService userService;
+    
+    @Autowired
+    private NotificationService notificationService;
 
     @RequestMapping(value = {"", "/", "/main"})
     public ModelAndView mainPage() {
-        System.out.println("Página principal");
         ModelAndView mv = new ModelAndView("/reader/main");
         return mv;
     }
 
     @RequestMapping("/recover-password")
     public ModelAndView recoverPasswordPage() {
-        System.out.println("Página recuperação de senha");
         ModelAndView mv = new ModelAndView("recover-password");
         return mv;
     }
 
-    @RequestMapping("/create-register")
+    @RequestMapping("/register")
     public ModelAndView createRegisterPage(User user) {
-        System.out.println("Página criação cadastro");
-        ModelAndView mv = new ModelAndView("create-register");
-        //mv.addObject("user", new User());
+        ModelAndView mv = new ModelAndView("register");
         return mv;
     }
     
-    @RequestMapping(value = "/create-register", method = RequestMethod.POST)
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
     public ModelAndView createUser(@Valid User user, BindingResult result){
-        
-        System.out.println(user.toString());
-        
+                
         if (result.hasErrors()){
-            System.out.println("Há erros no cadastro");
+            
+            //notificationService.addErrorMessage("Há erros no cadastro");
+            //notificationService.addInfoMessage("Outra mensagem");
+            
             return createRegisterPage(user);
         }
         
-        System.out.println("Salvando o registro");
-        ModelAndView mv = new ModelAndView("create-register");
-        userService.addUser(user);
-        mv.addObject("message", "Usuário " + user.getName()+ " salvo com sucesso");
+        ModelAndView mv = new ModelAndView("register");
+        userService.add(user);
+        mv.addObject("message_success", "Usuário " + user.getName()+ " salvo com sucesso");
         return mv;
     }
-    
 }
